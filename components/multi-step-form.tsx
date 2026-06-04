@@ -1,7 +1,8 @@
 "use client"
 
-// Multi-step contact form with animations
+// Multi-step contact form with animations (email only — SMS opt-in is via GHL chat widget)
 import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, ArrowLeft, CheckCircle, User, Building, Mail, Briefcase, DollarSign, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -442,6 +443,20 @@ export function MultiStepForm() {
           )}
         </AnimatePresence>
       </div>
+
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        This form is for email inquiries only and does not sign you up for text messages.
+        To receive SMS updates, use the chat widget on this site. By submitting, you agree
+        to our{" "}
+        <Link href="/privacy" className="text-primary hover:underline">
+          Privacy Policy
+        </Link>{" "}
+        and{" "}
+        <Link href="/terms" className="text-primary hover:underline">
+          Terms of Service
+        </Link>
+        .
+      </p>
 
       {/* Navigation Buttons */}
       <div className="flex justify-between pt-6 border-t border-border">

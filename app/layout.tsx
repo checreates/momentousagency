@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GhlChatWidget } from '@/components/ghl-chat-widget'
 import './globals.css'
 
 const inter = Inter({ 
@@ -34,16 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <head>
-        <script 
-          src="https://beta.leadconnectorhq.com/loader.js" 
-          data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" 
-          data-widget-id="69eb561abd8fe8da4a4b311a"
-          async
-        />
-      </head>
       <body className="font-sans antialiased">
         {children}
+        <GhlChatWidget />
         <Analytics />
       </body>
     </html>

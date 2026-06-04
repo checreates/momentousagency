@@ -132,8 +132,29 @@ export function Footer() {
           </div>
         </div>
 
+        {/* SMS / chat widget compliance (GHL widget-first A2P) */}
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <p className="text-secondary-foreground/60 text-xs leading-relaxed max-w-4xl">
+            Text message updates are available only through our website chat widget. This
+            site&apos;s contact form does not enroll you in SMS. Message frequency varies.
+            Message and data rates may apply. Reply STOP to opt out or HELP for help at{" "}
+            <a href="tel:+18352764138" className="underline hover:text-white">
+              835-276-4138
+            </a>
+            . See our{" "}
+            <Link href="/privacy" className="underline hover:text-white">
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link href="/terms" className="underline hover:text-white">
+              Terms of Service
+            </Link>
+            .
+          </p>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-secondary-foreground/50 text-sm">
             &copy; {new Date().getFullYear()} Momentous Agency. All rights reserved.
           </p>
