@@ -52,6 +52,12 @@ const itemVariants = {
   },
 }
 
+const floatingGlowTransition = {
+  duration: 4,
+  repeat: Infinity,
+  ease: "easeInOut" as const,
+}
+
 export function ProcessSection() {
   return (
     <section className="py-24 lg:py-32 bg-secondary text-secondary-foreground overflow-hidden">
@@ -88,6 +94,7 @@ export function ProcessSection() {
             <motion.div 
               key={step.number} 
               variants={itemVariants}
+              whileHover={{ y: -8 }}
               className="relative group"
             >
               {/* Connector line */}
@@ -103,9 +110,18 @@ export function ProcessSection() {
               )}
 
               <motion.div 
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.3 }}
                 className="relative bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-primary/30 transition-all duration-300 hover:bg-white/10"
               >
+                <motion.div
+                  animate={{
+                    opacity: [0.05, 0.18, 0.05],
+                    scale: [1, 1.03, 1],
+                  }}
+                  transition={{ ...floatingGlowTransition, delay: index * 0.2 }}
+                  className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-transparent"
+                />
+
                 {/* Number badge */}
                 <motion.span 
                   initial={{ scale: 0 }}
@@ -119,7 +135,7 @@ export function ProcessSection() {
 
                 {/* Icon */}
                 <motion.div 
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileHover={{ scale: 1.1, rotate: 6 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/30 transition-colors"
                 >

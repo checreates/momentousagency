@@ -1,18 +1,10 @@
 "use client"
 
-import { useEffect } from "react"
+import { useMemo, useState } from "react"
 import { Calendar, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-
-// Declare Calendly on window
-declare global {
-  interface Window {
-    Calendly?: {
-      initPopupWidget: (options: { url: string }) => void
-    }
-  }
-}
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 
 interface CalendlyButtonProps {
   variant?: "primary" | "outline" | "white"
@@ -31,37 +23,19 @@ export function CalendlyButton({
   showIcon = true,
   showArrow = false
 }: CalendlyButtonProps) {
-  useEffect(() => {
-    // Load Calendly CSS
-    const link = document.createElement("link")
-    link.href = "https://assets.calendly.com/assets/external/widget.css"
-    link.rel = "stylesheet"
-    document.head.appendChild(link)
+  const [open, setOpen] = useState(false)
 
-    // Load Calendly JS
-    const script = document.createElement("script")
-    script.src = "https://assets.calendly.com/assets/external/widget.js"
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      // Cleanup
-      if (document.head.contains(link)) {
-        document.head.removeChild(link)
-      }
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
+  const calendlyUrl = useMemo(() => {
+    const params = new URLSearchParams({
+      hide_landing_page_details: "1",
+      hide_event_type_details: "1",
+      hide_gdpr_banner: "1",
+      background_color: "ffffff",
+      text_color: "0f172a",
+      primary_color: "0088cc",
+    })
+    return `https://calendly.com/chewilliamscreates?${params.toString()}`
   }, [])
-
-  const openCalendly = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: "https://calendly.com/chewilliamscreates"
-      })
-    }
-  }
 
   const getButtonClasses = () => {
     const base = "rounded-full px-8"
@@ -85,12 +59,30 @@ export function CalendlyButton({
       <Button 
         size={size}
         className={`${getButtonClasses()} ${className}`}
-        onClick={openCalendly}
+        onClick={() => setOpen(true)}
       >
         {showIcon && <Calendar className="mr-2 w-5 h-5" />}
         {children || "Schedule a Call"}
         {showArrow && <ArrowRight className="ml-2 w-5 h-5" />}
       </Button>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
+          showCloseButton
+          className="w-[96vw] max-w-5xl p-0 overflow-hidden border-primary/20 shadow-2xl [&_[data-slot=dialog-close]]:text-white [&_[data-slot=dialog-close]]:opacity-90 [&_[data-slot=dialog-close]]:hover:opacity-100 [&_[data-slot=dialog-close]]:focus-visible:ring-white/40"
+        >
+          <DialogTitle className="sr-only">Schedule a Strategy Call</DialogTitle>
+          <div className="bg-secondary px-4 py-3 border-b border-primary/20">
+            <p className="text-sm font-medium text-secondary-foreground">Book your strategy call</p>
+            <p className="text-xs text-secondary-foreground/70">Pick a date and time that works for you.</p>
+          </div>
+          <iframe
+            src={calendlyUrl}
+            title="Calendly scheduling"
+            className="w-full h-[78vh] min-h-[620px]"
+            loading="lazy"
+          />
+        </DialogContent>
+      </Dialog>
     </motion.div>
   )
 }

@@ -82,9 +82,15 @@ export function TestimonialsSection() {
             <motion.div
               key={testimonial.author}
               variants={itemVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={{ y: -8, scale: 1.01, transition: { duration: 0.3 } }}
               className="relative p-8 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
             >
+              <motion.div
+                animate={{ opacity: [0.04, 0.12, 0.04] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 via-transparent to-transparent"
+              />
+
               {/* Stars */}
               <div className="flex gap-1 mb-6">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -107,9 +113,13 @@ export function TestimonialsSection() {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-lg">
+                <motion.div
+                  whileHover={{ rotate: -8, scale: 1.08 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                  className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-lg"
+                >
                   {testimonial.author.charAt(0)}
-                </div>
+                </motion.div>
                 <div>
                   <p className="font-semibold text-foreground">{testimonial.author}</p>
                   <p className="text-sm text-muted-foreground">{testimonial.title}</p>

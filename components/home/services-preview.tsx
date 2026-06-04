@@ -102,12 +102,19 @@ export function ServicesPreview() {
             <motion.div
               key={service.title}
               variants={itemVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileHover={{ y: -10, scale: 1.01, transition: { duration: 0.3 } }}
             >
               <Link
                 href={service.href}
                 className="group relative p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 block h-full"
               >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{ opacity: 0.2, scale: 1.05 }}
+                  transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="pointer-events-none absolute -inset-2 rounded-3xl bg-primary/10 blur-2xl"
+                />
+
                 {/* Icon */}
                 <motion.div 
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -126,10 +133,14 @@ export function ServicesPreview() {
                 </p>
 
                 {/* Link indicator */}
-                <span className="inline-flex items-center text-primary font-medium text-sm">
+                <motion.span
+                  whileHover={{ x: 4 }}
+                  transition={{ type: "spring", stiffness: 250, damping: 20 }}
+                  className="inline-flex items-center text-primary font-medium text-sm"
+                >
                   Learn more
                   <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
+                </motion.span>
               </Link>
             </motion.div>
           ))}
