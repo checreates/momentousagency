@@ -7,13 +7,26 @@ const LOCATION_ID = "HfkuKJhCSVosS7wfITUj"
 const LOADER_SRC = "https://beta.leadconnectorhq.com/loader.js"
 const RESOURCES_URL = "https://beta.leadconnectorhq.com/chat-widget/loader.js"
 
+function wakeWidget() {
+  window.dispatchEvent(new Event("scroll", { bubbles: true }))
+  document.body?.dispatchEvent(
+    new PointerEvent("pointerdown", { bubbles: true })
+  )
+}
+
 /**
- * LeadConnector chat widget — script matches GHL embed:
- * loader.js + data-resources-url + data-widget-id 69eb561abd8fe8da4a4b311a
- * Plus mount div with data-location-id (required for the bubble to render).
+ * LeadConnector chat widget for www.momentousagency.xyz
+ * GHL embed: loader.js + data-widget-id + location mount.
+ * Widget config uses load-strategy "interaction" — we wake it on mount.
  */
 export function GhlChatWidget() {
   useEffect(() => {
+    if (!document.querySelector("chat-widget")) {
+      const el = document.createElement("chat-widget")
+      el.setAttribute("data-widget-id", WIDGET_ID)
+      document.body.appendChild(el)
+    }
+
     if (!document.querySelector("[data-chat-widget]")) {
       const mount = document.createElement("div")
       mount.setAttribute("data-chat-widget", "")
@@ -31,7 +44,17 @@ export function GhlChatWidget() {
       script.async = true
       script.setAttribute("data-resources-url", RESOURCES_URL)
       script.setAttribute("data-widget-id", WIDGET_ID)
+      script.setAttribute("data-load-strategy", "immediate")
       document.body.appendChild(script)
+    }
+
+    wakeWidget()
+    window.addEventListener("load", wakeWidget, { once: true })
+    window.addEventListener("LC_chatWidgetLoaded", wakeWidget, { once: true })
+
+    return () => {
+      window.removeEventListener("load", wakeWidget)
+      window.removeEventListener("LC_chatWidgetLoaded", wakeWidget)
     }
   }, [])
 

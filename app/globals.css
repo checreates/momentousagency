@@ -195,3 +195,14 @@
     }
   }
 }
+
+/* GHL LeadConnector chat bubble — keep above site chrome */
+chat-widget {
+  position: fixed !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483646 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: visible !important;
+}
