@@ -34,6 +34,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <script 
+          src="https://beta.leadconnectorhq.com/loader.js" 
+          data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" 
+          data-widget-id="69eb561abd8fe8da4a4b311a"
+          async
+        />
+      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
