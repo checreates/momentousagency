@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
+import { BrandLogo } from "@/components/brand-logo"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -152,12 +152,10 @@ export function HeroSection() {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative"
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="Momentous Agency"
+                <BrandLogo
                   width={500}
                   height={500}
-                  className="w-full h-full object-contain drop-shadow-2xl"
+                  className="w-full h-full drop-shadow-2xl"
                   priority
                 />
               </motion.div>
@@ -173,13 +171,7 @@ export function HeroSection() {
                   {/* Glow effect */}
                   <div className="absolute -inset-2 bg-primary/40 rounded-2xl blur-xl" />
                   <div className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-xl">
-                    <Image
-                      src="/images/logo.png"
-                      alt="Project"
-                      width={80}
-                      height={80}
-                      className="w-16 h-16 object-contain"
-                    />
+                    <BrandLogo width={80} height={80} className="w-16 h-16" />
                     <p className="text-sm font-medium text-secondary mt-2">250+ Projects</p>
                   </div>
                 </div>
@@ -195,13 +187,7 @@ export function HeroSection() {
                   {/* Glow effect */}
                   <div className="absolute -inset-2 bg-primary/40 rounded-2xl blur-xl" />
                   <div className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-xl">
-                    <Image
-                      src="/images/logo.png"
-                      alt="Project"
-                      width={80}
-                      height={80}
-                      className="w-16 h-16 object-contain"
-                    />
+                    <BrandLogo width={80} height={80} className="w-16 h-16" />
                     <p className="text-sm font-medium text-secondary mt-2">98% Satisfaction</p>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react"
+import { BrandLogo } from "@/components/brand-logo"
 
 const footerLinks = {
   company: [
@@ -36,13 +36,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <Image
-                src="/images/logo.png"
-                alt="Momentous Agency"
-                width={48}
-                height={48}
-                className="w-12 h-12 object-contain brightness-0 invert"
-              />
+              <BrandLogo width={48} height={48} className="w-12 h-12" onDark />
               <span className="font-bold text-xl tracking-tight">
                 Momentous
               </span>

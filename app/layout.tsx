@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { GhlChatWidget } from '@/components/ghl-chat-widget'
+import { BRAND_LOGO_SRC } from '@/lib/brand'
 import './globals.css'
 
 const inter = Inter({ 
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
     title: 'Momentous Agency | Motivate. Innovate. Create.',
     description: 'A forward-thinking digital agency helping brands create momentous impact.',
     type: 'website',
+  },
+  icons: {
+    icon: BRAND_LOGO_SRC,
+    apple: BRAND_LOGO_SRC,
   },
 }
 

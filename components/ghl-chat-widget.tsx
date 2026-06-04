@@ -8,8 +8,9 @@ const LOADER_SRC = "https://beta.leadconnectorhq.com/loader.js"
 const RESOURCES_URL = "https://beta.leadconnectorhq.com/chat-widget/loader.js"
 
 /**
- * Injects the exact LeadConnector embed (div + loader).
- * next/script alone did not reliably render the mount node in production.
+ * LeadConnector chat widget — script matches GHL embed:
+ * loader.js + data-resources-url + data-widget-id 69eb561abd8fe8da4a4b311a
+ * Plus mount div with data-location-id (required for the bubble to render).
  */
 export function GhlChatWidget() {
   useEffect(() => {
