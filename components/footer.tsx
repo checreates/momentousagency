@@ -6,7 +6,6 @@ const footerLinks = {
   company: [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    
     { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
   ],
@@ -43,12 +42,13 @@ export function Footer() {
                 height={48}
                 className="w-12 h-12 object-contain brightness-0 invert"
               />
-              <span className="font-bold text-xl tracking-tight">
-                Momentous
-              </span>
+              <span className="font-bold text-xl tracking-tight">Momentous</span>
             </Link>
-            <p className="text-secondary-foreground/70 text-sm leading-relaxed mb-6">
-              Motivate. Innovate. Create. We help brands make momentous impact through strategic design and digital excellence.
+            <p className="text-sm leading-relaxed mb-2" style={{ color: 'rgba(239, 255, 255, 0.6)' }}>
+              Ice Cold Strategy. On Fire Results.
+            </p>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(239, 255, 255, 0.45)' }}>
+              Clarify the path. Simplify the complex. Automate the grind.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -57,10 +57,13 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                  className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+                  style={{ background: 'rgba(110, 207, 245, 0.1)', border: '1px solid rgba(110, 207, 245, 0.15)' }}
                   aria-label={social.label}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(110, 207, 245, 0.2)' }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(110, 207, 245, 0.1)' }}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-5 h-5" style={{ color: '#6ECFF5' }} />
                 </a>
               ))}
             </div>
@@ -68,13 +71,16 @@ export function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">Company</h3>
+            <h3 className="font-semibold text-xs uppercase tracking-widest mb-4" style={{ color: 'rgba(239, 255, 255, 0.4)' }}>
+              Company
+            </h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-secondary-foreground/70 hover:text-white text-sm transition-colors"
+                    className="text-sm transition-colors"
+                    style={{ color: 'rgba(239, 255, 255, 0.6)' }}
                   >
                     {link.label}
                   </Link>
@@ -85,13 +91,16 @@ export function Footer() {
 
           {/* Services Links */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">Services</h3>
+            <h3 className="font-semibold text-xs uppercase tracking-widest mb-4" style={{ color: 'rgba(239, 255, 255, 0.4)' }}>
+              Services
+            </h3>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-secondary-foreground/70 hover:text-white text-sm transition-colors"
+                    className="text-sm transition-colors"
+                    style={{ color: 'rgba(239, 255, 255, 0.6)' }}
                   >
                     {link.label}
                   </Link>
@@ -102,29 +111,33 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-sm uppercase tracking-wider mb-4">Contact</h3>
+            <h3 className="font-semibold text-xs uppercase tracking-widest mb-4" style={{ color: 'rgba(239, 255, 255, 0.4)' }}>
+              Contact
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-primary mt-0.5" />
+                <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#6ECFF5' }} />
                 <a
                   href="mailto:hello@momentous.marketing"
-                  className="text-secondary-foreground/70 hover:text-white text-sm transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'rgba(239, 255, 255, 0.6)' }}
                 >
                   hello@momentous.marketing
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary mt-0.5" />
+                <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#6ECFF5' }} />
                 <a
                   href="tel:+18352764138"
-                  className="text-secondary-foreground/70 hover:text-white text-sm transition-colors"
+                  className="text-sm transition-colors"
+                  style={{ color: 'rgba(239, 255, 255, 0.6)' }}
                 >
                   835-276-4138
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <span className="text-secondary-foreground/70 text-sm">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: '#6ECFF5' }} />
+                <span className="text-sm" style={{ color: 'rgba(239, 255, 255, 0.6)' }}>
                   Lehigh Valley, PA
                 </span>
               </li>
@@ -133,16 +146,20 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-secondary-foreground/50 text-sm">
-            &copy; {new Date().getFullYear()} Momentous Agency. All rights reserved.
+        <div
+          className="mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
+          style={{ borderTop: '1px solid rgba(110, 207, 245, 0.1)' }}
+        >
+          <p className="text-sm" style={{ color: 'rgba(239, 255, 255, 0.35)' }}>
+            &copy; {new Date().getFullYear()} Momentous Agency. Liquid Glass Brand System v1.0
           </p>
           <div className="flex gap-6">
             {footerLinks.legal.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-secondary-foreground/50 hover:text-white text-sm transition-colors"
+                className="text-sm transition-colors"
+                style={{ color: 'rgba(239, 255, 255, 0.35)' }}
               >
                 {link.label}
               </Link>
