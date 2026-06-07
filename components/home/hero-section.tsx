@@ -159,39 +159,6 @@ export function HeroSection() {
                   priority
                 />
               </motion.div>
-
-              {/* Floating project cards with logo */}
-              <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="absolute left-3 sm:-left-4 top-1/4"
-              >
-                <div className="relative">
-                  {/* Glow effect */}
-                  <div className="absolute -inset-2 bg-primary/40 rounded-2xl blur-xl" />
-                  <div className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-xl">
-                    <BrandLogo width={80} height={80} className="w-16 h-16" />
-                    <p className="text-sm font-medium text-secondary mt-2">250+ Projects</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute right-3 sm:-right-4 bottom-1/4"
-              >
-                <div className="relative">
-                  {/* Glow effect */}
-                  <div className="absolute -inset-2 bg-primary/40 rounded-2xl blur-xl" />
-                  <div className="relative bg-white rounded-2xl p-3 sm:p-4 shadow-xl">
-                    <BrandLogo width={80} height={80} className="w-16 h-16" />
-                    <p className="text-sm font-medium text-secondary mt-2">98% Satisfaction</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
