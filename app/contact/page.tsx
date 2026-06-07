@@ -3,9 +3,9 @@
 import { motion } from "framer-motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { Mail, Phone, MapPin, Clock, Calendar } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Calendar, ArrowRight } from "lucide-react"
 import { MultiStepForm } from "@/components/multi-step-form"
-import { CalendlyButton } from "@/components/calendly-button"
+import { Button } from "@/components/ui/button"
 
 const contactInfo = [
   {
@@ -158,13 +158,13 @@ export default function ContactPage() {
                   <p className="text-secondary-foreground/70 mb-4">
                     Book a free 30-minute strategy call with our team. No commitment, just actionable insights.
                   </p>
-                  <CalendlyButton 
-                    variant="primary" 
-                    className="w-full"
-                    showArrow
-                  >
-                    Schedule a Call
-                  </CalendlyButton>
+                  <Button asChild size="lg" className="w-full rounded-full gradient-primary hover:opacity-90">
+                    <a href="tel:+18352764138">
+                      <Calendar className="mr-2 w-5 h-5" />
+                      Schedule a Call
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
                 </motion.div>
               </motion.div>
 

@@ -4,7 +4,6 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { CalendlyButton } from "@/components/calendly-button"
 
 export function CTASection() {
   return (
@@ -70,9 +69,17 @@ export function CTASection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <CalendlyButton variant="white">
-                Book a Free Call
-              </CalendlyButton>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button asChild size="lg" className="rounded-full px-8 bg-white text-primary hover:bg-white/90 transition-colors">
+                  <Link href="/contact">
+                    Book a Free Call
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+              </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
