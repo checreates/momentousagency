@@ -48,6 +48,7 @@ export function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const formContainerRef = useRef<HTMLDivElement>(null)
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -130,9 +131,23 @@ export function MultiStepForm() {
   const handleSubmit = async () => {
     if (!canProceed()) return
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    setSubmitError(null)
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error ?? "Something went wrong. Please try again.")
+      }
+      setIsSubmitted(true)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const slideVariants = {
@@ -459,6 +474,15 @@ export function MultiStepForm() {
       </p>
 
       {/* Navigation Buttons */}
+      {submitError && (
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-sm text-red-500 text-center"
+        >
+          {submitError}
+        </motion.p>
+      )}
       <div className="flex justify-between pt-6 border-t border-border">
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Button

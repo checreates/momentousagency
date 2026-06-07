@@ -22,15 +22,12 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border"
+      className="fixed top-0 left-0 right-0 z-50 glass-nav"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link href="/" className="flex items-center gap-3">
               <BrandLogo width={44} height={44} className="w-11 h-11" priority />
               <span className="font-bold text-lg tracking-tight text-foreground">
@@ -53,7 +50,10 @@ export function Navigation() {
                   className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover:w-full"
+                    style={{ background: '#6ECFF5' }}
+                  />
                 </Link>
               </motion.div>
             ))}
@@ -66,11 +66,8 @@ export function Navigation() {
             transition={{ delay: 0.3 }}
             className="hidden md:block"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button asChild className="rounded-full px-6 gradient-primary hover:opacity-90 transition-opacity">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button asChild className="rounded-full px-6 gradient-primary hover:opacity-90 transition-opacity text-white">
                 <Link href="/contact">Get Started</Link>
               </Button>
             </motion.div>
@@ -141,7 +138,10 @@ export function Navigation() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: navLinks.length * 0.05 }}
                 >
-                  <Button asChild className="rounded-full gradient-primary hover:opacity-90 transition-opacity mt-2 w-full">
+                  <Button
+                    asChild
+                    className="rounded-full gradient-primary hover:opacity-90 transition-opacity mt-2 w-full text-white"
+                  >
                     <Link href="/contact">Get Started</Link>
                   </Button>
                 </motion.div>
