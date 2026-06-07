@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { BrandLogo } from "@/components/brand-logo"
+import { BRAND_NAME } from "@/lib/brand"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -33,8 +34,8 @@ export function Navigation() {
           >
             <Link href="/" className="flex items-center gap-3">
               <BrandLogo width={44} height={44} className="w-11 h-11" priority />
-              <span className="font-bold text-lg tracking-tight text-foreground">
-                Momentous
+              <span className="font-bold text-base sm:text-lg tracking-tight text-foreground">
+                {BRAND_NAME}
               </span>
             </Link>
           </motion.div>
