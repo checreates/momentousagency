@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect } from "react"
-
-const WIDGET_ID = "69eb561abd8fe8da4a4b311a"
-const LOCATION_ID = "HfkuKJhCSVosS7wfITUj"
-const LOADER_SRC = "https://beta.leadconnectorhq.com/loader.js"
-const RESOURCES_URL = "https://beta.leadconnectorhq.com/chat-widget/loader.js"
+import {
+  GHL_LOADER_SRC,
+  GHL_RESOURCES_URL,
+  GHL_WIDGET_ID,
+} from "@/lib/ghl-config"
 
 function wakeWidget() {
   window.dispatchEvent(new Event("scroll", { bubbles: true }))
@@ -21,29 +21,15 @@ function wakeWidget() {
  */
 export function GhlChatWidget() {
   useEffect(() => {
-    if (!document.querySelector("chat-widget")) {
-      const el = document.createElement("chat-widget")
-      el.setAttribute("data-widget-id", WIDGET_ID)
-      document.body.appendChild(el)
-    }
-
-    if (!document.querySelector("[data-chat-widget]")) {
-      const mount = document.createElement("div")
-      mount.setAttribute("data-chat-widget", "")
-      mount.setAttribute("data-widget-id", WIDGET_ID)
-      mount.setAttribute("data-location-id", LOCATION_ID)
-      document.body.appendChild(mount)
-    }
-
     const existing = document.querySelector<HTMLScriptElement>(
-      `script[src="${LOADER_SRC}"]`
+      `script[src="${GHL_LOADER_SRC}"]`
     )
     if (!existing) {
       const script = document.createElement("script")
-      script.src = LOADER_SRC
+      script.src = GHL_LOADER_SRC
       script.async = true
-      script.setAttribute("data-resources-url", RESOURCES_URL)
-      script.setAttribute("data-widget-id", WIDGET_ID)
+      script.setAttribute("data-resources-url", GHL_RESOURCES_URL)
+      script.setAttribute("data-widget-id", GHL_WIDGET_ID)
       script.setAttribute("data-load-strategy", "immediate")
       document.body.appendChild(script)
     }

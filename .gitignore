@@ -1,1 +1,25 @@
+# dependencies
 node_modules
+.pnpm-store
+
+# next.js
+.next
+out
+
+# env / secrets
+.env
+.env*.local
+
+# debug / OS
+npm-debug.log*
+.DS_Store
+*.pem
+
+# typescript
+*.tsbuildinfo
+
+# vercel
+.vercel
+
+# testing
+coverage
