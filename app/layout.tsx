@@ -7,16 +7,17 @@ import { BRAND_LOGO_SRC } from '@/lib/brand'
 import { LEGAL } from '@/lib/legal-config'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
-});
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(LEGAL.website),
   title: 'Momentous Agency | Motivate. Innovate. Create.',
-  description: 'A forward-thinking digital agency helping brands create momentous impact through strategy, design, and technology.',
+  description:
+    'A forward-thinking digital agency helping brands create momentous impact through strategy, design, and technology.',
   keywords: ['digital agency', 'branding', 'web design', 'marketing', 'strategy'],
   authors: [{ name: 'Momentous Agency' }],
   openGraph: {

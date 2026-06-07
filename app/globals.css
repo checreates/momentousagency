@@ -1,114 +1,106 @@
-/* Momentous Agency — Liquid Glass Brand System v1.0 */
+/* Momentous Agency Global Styles */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Ice Clear #EFFFFF */
-  --background: oklch(0.97 0.025 200);
-  /* Frost Black #0D0D0D */
-  --foreground: oklch(0.09 0 0);
-  /* Diamond White */
+  /* Momentous Agency Brand Colors */
+  --background: oklch(0.98 0.005 240);
+  --foreground: oklch(0.15 0.03 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.09 0 0);
+  --card-foreground: oklch(0.15 0.03 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.09 0 0);
-
-  /* Deep Glacier Navy #0A1A2F — authority, CTAs */
-  --primary: oklch(0.17 0.055 258);
-  --primary-foreground: oklch(0.97 0.025 200);
-
-  /* Glacier Surface #0D2440 — dark panels */
-  --secondary: oklch(0.20 0.06 255);
-  --secondary-foreground: oklch(0.97 0.025 200);
-
-  /* Molten Silver #C7D1D9 */
-  --muted: oklch(0.92 0.015 220);
-  --muted-foreground: oklch(0.48 0.025 240);
-
-  /* Liquid Glass Blue tint — accent backgrounds */
-  --accent: oklch(0.94 0.03 210);
-  --accent-foreground: oklch(0.17 0.055 258);
-
-  /* Electric Fire Ember #FF4F2E */
-  --destructive: oklch(0.65 0.22 28);
-  --destructive-foreground: oklch(1 0 0);
-
-  /* Glass-blue tinted borders */
-  --border: oklch(0.88 0.02 210);
-  --input: oklch(0.88 0.02 210);
-  /* Liquid Glass Blue #6ECFF5 */
-  --ring: oklch(0.81 0.09 215);
-
-  --chart-1: oklch(0.81 0.09 215);
-  --chart-2: oklch(0.17 0.055 258);
-  --chart-3: oklch(0.65 0.22 28);
-  --chart-4: oklch(0.85 0.015 228);
-  --chart-5: oklch(0.20 0.06 255);
-
+  --popover-foreground: oklch(0.15 0.03 250);
+  
+  /* Primary Blue #0088CC */
+  --primary: oklch(0.62 0.17 230);
+  --primary-foreground: oklch(1 0 0);
+  
+  /* Secondary Navy #0A2447 */
+  --secondary: oklch(0.25 0.08 250);
+  --secondary-foreground: oklch(1 0 0);
+  
+  /* Muted/Surface */
+  --muted: oklch(0.96 0.01 240);
+  --muted-foreground: oklch(0.5 0.02 250);
+  
+  /* Accent Light Blue */
+  --accent: oklch(0.94 0.03 230);
+  --accent-foreground: oklch(0.25 0.08 250);
+  
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  
+  --border: oklch(0.90 0.01 240);
+  --input: oklch(0.90 0.01 240);
+  --ring: oklch(0.62 0.17 230);
+  
+  --chart-1: oklch(0.62 0.17 230);
+  --chart-2: oklch(0.25 0.08 250);
+  --chart-3: oklch(0.70 0.15 220);
+  --chart-4: oklch(0.55 0.12 240);
+  --chart-5: oklch(0.45 0.10 250);
+  
   --radius: 0.75rem;
-
-  --sidebar: oklch(0.97 0.025 200);
-  --sidebar-foreground: oklch(0.09 0 0);
-  --sidebar-primary: oklch(0.17 0.055 258);
-  --sidebar-primary-foreground: oklch(0.97 0.025 200);
-  --sidebar-accent: oklch(0.94 0.03 210);
-  --sidebar-accent-foreground: oklch(0.17 0.055 258);
-  --sidebar-border: oklch(0.88 0.02 210);
-  --sidebar-ring: oklch(0.81 0.09 215);
+  
+  --sidebar: oklch(0.98 0.005 240);
+  --sidebar-foreground: oklch(0.15 0.03 250);
+  --sidebar-primary: oklch(0.62 0.17 230);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0.03 230);
+  --sidebar-accent-foreground: oklch(0.25 0.08 250);
+  --sidebar-border: oklch(0.90 0.01 240);
+  --sidebar-ring: oklch(0.62 0.17 230);
 }
 
 .dark {
-  /* Deep Glacier Navy #0A1A2F */
-  --background: oklch(0.17 0.055 258);
-  /* Ice Clear #EFFFFF */
-  --foreground: oklch(0.97 0.025 200);
-  /* Glacier Surface #0D2440 */
-  --card: oklch(0.20 0.06 255);
-  --card-foreground: oklch(0.97 0.025 200);
-  --popover: oklch(0.20 0.06 255);
-  --popover-foreground: oklch(0.97 0.025 200);
-
-  /* Liquid Glass Blue #6ECFF5 — primary in dark */
-  --primary: oklch(0.81 0.09 215);
-  --primary-foreground: oklch(0.17 0.055 258);
-
-  --secondary: oklch(0.24 0.055 256);
-  --secondary-foreground: oklch(0.97 0.025 200);
-
-  --muted: oklch(0.24 0.04 250);
-  --muted-foreground: oklch(0.65 0.025 220);
-
-  --accent: oklch(0.24 0.055 256);
-  --accent-foreground: oklch(0.97 0.025 200);
-
-  --destructive: oklch(0.65 0.22 28);
-  --destructive-foreground: oklch(1 0 0);
-
-  --border: oklch(0.27 0.05 252);
-  --input: oklch(0.27 0.05 252);
-  --ring: oklch(0.81 0.09 215);
-
-  --chart-1: oklch(0.81 0.09 215);
-  --chart-2: oklch(0.65 0.22 28);
-  --chart-3: oklch(0.70 0.08 220);
-  --chart-4: oklch(0.85 0.015 228);
-  --chart-5: oklch(0.55 0.07 245);
-
-  --sidebar: oklch(0.20 0.06 255);
-  --sidebar-foreground: oklch(0.97 0.025 200);
-  --sidebar-primary: oklch(0.81 0.09 215);
-  --sidebar-primary-foreground: oklch(0.17 0.055 258);
-  --sidebar-accent: oklch(0.24 0.04 250);
-  --sidebar-accent-foreground: oklch(0.97 0.025 200);
-  --sidebar-border: oklch(0.27 0.05 252);
-  --sidebar-ring: oklch(0.81 0.09 215);
+  /* Dark mode with navy base */
+  --background: oklch(0.15 0.04 250);
+  --foreground: oklch(0.98 0.005 240);
+  --card: oklch(0.20 0.04 250);
+  --card-foreground: oklch(0.98 0.005 240);
+  --popover: oklch(0.20 0.04 250);
+  --popover-foreground: oklch(0.98 0.005 240);
+  
+  --primary: oklch(0.68 0.17 230);
+  --primary-foreground: oklch(0.15 0.04 250);
+  
+  --secondary: oklch(0.30 0.06 250);
+  --secondary-foreground: oklch(0.98 0.005 240);
+  
+  --muted: oklch(0.25 0.04 250);
+  --muted-foreground: oklch(0.65 0.02 240);
+  
+  --accent: oklch(0.30 0.06 250);
+  --accent-foreground: oklch(0.98 0.005 240);
+  
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  
+  --border: oklch(0.30 0.04 250);
+  --input: oklch(0.30 0.04 250);
+  --ring: oklch(0.68 0.17 230);
+  
+  --chart-1: oklch(0.68 0.17 230);
+  --chart-2: oklch(0.55 0.12 240);
+  --chart-3: oklch(0.75 0.15 220);
+  --chart-4: oklch(0.60 0.10 250);
+  --chart-5: oklch(0.50 0.08 260);
+  
+  --sidebar: oklch(0.18 0.04 250);
+  --sidebar-foreground: oklch(0.98 0.005 240);
+  --sidebar-primary: oklch(0.68 0.17 230);
+  --sidebar-primary-foreground: oklch(0.15 0.04 250);
+  --sidebar-accent: oklch(0.25 0.04 250);
+  --sidebar-accent-foreground: oklch(0.98 0.005 240);
+  --sidebar-border: oklch(0.30 0.04 250);
+  --sidebar-ring: oklch(0.68 0.17 230);
 }
 
 @theme inline {
-  --font-sans: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-sans: 'Inter', 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -156,116 +148,51 @@
   }
 }
 
-/* Liquid Glass Brand System — Utilities */
+/* Custom Momentous Brand Utilities */
 @layer utilities {
-  /* Deep Navy → Glacier Surface */
   .gradient-primary {
-    background: linear-gradient(135deg, #0A1A2F 0%, #0D2440 100%);
+    background: linear-gradient(135deg, #0066BB 0%, #00AAEE 100%);
   }
-
-  /* Glass Blue → Navy — for special hero/highlight accents */
-  .gradient-glass {
-    background: linear-gradient(135deg, #6ECFF5 0%, #0D2440 100%);
-  }
-
-  /* Electric Fire Ember accent */
-  .gradient-ember {
-    background: linear-gradient(135deg, #FF4F2E 0%, #CC2200 100%);
-  }
-
-  /* Ice Clear → Diamond White — hero background */
+  
   .gradient-hero {
-    background: linear-gradient(180deg, #EFFFFF 0%, #FFFFFF 60%, #EFFFFF 100%);
+    background: linear-gradient(180deg, #F4F8FC 0%, #FFFFFF 100%);
   }
-
-  /* Glass Blue gradient text */
+  
   .text-gradient {
-    background: linear-gradient(135deg, #6ECFF5 0%, #0A1A2F 80%);
+    background: linear-gradient(135deg, #0088CC 0%, #0066BB 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  /* Electric Fire Ember text */
-  .text-ember {
-    color: #FF4F2E;
-  }
-
-  /* Liquid Glass card — frosted glass */
+  
   .glass-card {
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(110, 207, 245, 0.28);
-    box-shadow: 0 8px 32px rgba(10, 26, 47, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 136, 204, 0.1);
   }
-
-  /* Heavy frosted panel */
-  .glass-panel {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(40px);
-    border: 1px solid rgba(110, 207, 245, 0.35);
-    box-shadow: 0 24px 64px rgba(10, 26, 47, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  }
-
-  /* Dark frosted glass for navy sections */
-  .glass-dark {
-    background: rgba(13, 36, 64, 0.65);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(110, 207, 245, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(110, 207, 245, 0.1);
-  }
-
-  /* Navigation glass */
-  .glass-nav {
-    background: rgba(239, 255, 255, 0.88);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border-bottom: 1px solid rgba(110, 207, 245, 0.22);
-    box-shadow: 0 1px 0 rgba(10, 26, 47, 0.04);
-  }
-
-  /* Glass Blue shimmer border */
-  .glacier-border {
-    border: 1px solid rgba(110, 207, 245, 0.4);
-    box-shadow: 0 0 0 1px rgba(110, 207, 245, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  }
-
+  
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-
+  
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
   }
-
-  .animate-float-slow {
-    animation: float 9s ease-in-out infinite;
-  }
-
+  
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
   }
-
+  
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes shimmer {
-    0%, 100% { opacity: 0.3; }
-    50%       { opacity: 0.8; }
-  }
-
-  .animate-shimmer {
-    animation: shimmer 3s ease-in-out infinite;
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
