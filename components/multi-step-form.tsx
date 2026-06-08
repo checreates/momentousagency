@@ -44,6 +44,22 @@ const steps = [
   { id: 5, title: "Project", icon: MessageSquare },
 ]
 
+// Keep motion variants stable to avoid reallocating objects on every render.
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 50 : -50,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? 50 : -50,
+    opacity: 0,
+  }),
+}
+
 export function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -99,16 +115,18 @@ export function MultiStepForm() {
     }))
   }
 
-  const canProceed = () => {
+  const canProceed = (): boolean => {
     switch (currentStep) {
       case 1:
-        return formData.firstName && formData.lastName && formData.email
+        return Boolean(
+          formData.firstName && formData.lastName && formData.email
+        )
       case 2:
         return true // Company is optional
       case 3:
         return formData.services.length > 0
       case 4:
-        return formData.budget
+        return Boolean(formData.budget)
       case 5:
         return formData.message.length > 10
       default:
@@ -148,21 +166,6 @@ export function MultiStepForm() {
     } finally {
       setIsSubmitting(false)
     }
-  }
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 50 : -50,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 50 : -50,
-      opacity: 0,
-    }),
   }
 
   if (isSubmitted) {

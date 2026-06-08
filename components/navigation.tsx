@@ -21,7 +21,7 @@ export function Navigation() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: EASE_OUT }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border"
@@ -46,7 +46,7 @@ export function Navigation() {
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.href}
-                initial={{ opacity: 0, y: -10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 + index * 0.05 }}
               >
@@ -63,7 +63,7 @@ export function Navigation() {
 
           {/* CTA Button */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
             className="hidden md:block"
@@ -81,7 +81,7 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen((v) => !v)}
             className="md:hidden p-2 text-foreground"
             aria-label="Toggle menu"
           >
