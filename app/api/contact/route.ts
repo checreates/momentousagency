@@ -28,23 +28,38 @@ const budgetLabels: Record<string, string> = {
   "not-sure": "Not sure yet",
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+}
+
 function buildHtml(data: ContactPayload): string {
+  const firstName = escapeHtml(data.firstName)
+  const lastName = escapeHtml(data.lastName)
+  const email = escapeHtml(data.email)
+  const company = data.company ? escapeHtml(data.company) : ""
   const servicesText = data.services
-    .map((id) => serviceLabels[id] ?? id)
+    .map((id) => escapeHtml(serviceLabels[id] ?? id))
     .join(", ")
+  const budget = escapeHtml(budgetLabels[data.budget] ?? data.budget)
+  const message = escapeHtml(data.message)
 
   return `
 <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
   <h2 style="color:#111">New contact form submission</h2>
   <table style="width:100%;border-collapse:collapse">
-    <tr><td style="padding:8px 0;color:#555;width:140px">Name</td><td style="padding:8px 0;font-weight:600">${data.firstName} ${data.lastName}</td></tr>
-    <tr><td style="padding:8px 0;color:#555">Email</td><td style="padding:8px 0;font-weight:600"><a href="mailto:${data.email}">${data.email}</a></td></tr>
-    ${data.company ? `<tr><td style="padding:8px 0;color:#555">Company</td><td style="padding:8px 0;font-weight:600">${data.company}</td></tr>` : ""}
+    <tr><td style="padding:8px 0;color:#555;width:140px">Name</td><td style="padding:8px 0;font-weight:600">${firstName} ${lastName}</td></tr>
+    <tr><td style="padding:8px 0;color:#555">Email</td><td style="padding:8px 0;font-weight:600"><a href="mailto:${email}">${email}</a></td></tr>
+    ${company ? `<tr><td style="padding:8px 0;color:#555">Company</td><td style="padding:8px 0;font-weight:600">${company}</td></tr>` : ""}
     <tr><td style="padding:8px 0;color:#555">Services</td><td style="padding:8px 0;font-weight:600">${servicesText}</td></tr>
-    <tr><td style="padding:8px 0;color:#555">Budget</td><td style="padding:8px 0;font-weight:600">${budgetLabels[data.budget] ?? data.budget}</td></tr>
+    <tr><td style="padding:8px 0;color:#555">Budget</td><td style="padding:8px 0;font-weight:600">${budget}</td></tr>
   </table>
   <h3 style="color:#111;margin-top:24px">Message</h3>
-  <p style="color:#333;line-height:1.6;white-space:pre-wrap">${data.message}</p>
+  <p style="color:#333;line-height:1.6;white-space:pre-wrap">${message}</p>
 </div>
 `
 }
