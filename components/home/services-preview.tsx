@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { EASE_OUT, fadeUpItemVariantsLg, staggerContainerVariants } from "@/lib/motion"
 import { ArrowRight, Palette, Code, BarChart3, Megaphone, Lightbulb, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -44,27 +45,8 @@ const services = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-}
+const containerVariants = staggerContainerVariants
+const itemVariants = fadeUpItemVariantsLg
 
 export function ServicesPreview() {
   return (
@@ -75,7 +57,7 @@ export function ServicesPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-accent text-primary text-sm font-medium mb-4">
@@ -111,7 +93,7 @@ export function ServicesPreview() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileHover={{ opacity: 0.2, scale: 1.05 }}
-                  transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                  transition={{ duration: 0.35, ease: EASE_OUT }}
                   className="pointer-events-none absolute -inset-2 rounded-3xl bg-primary/10 blur-2xl"
                 />
 

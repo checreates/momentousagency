@@ -15,6 +15,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(LEGAL.website),
+  alternates: {
+    canonical: './',
+  },
   title: 'Momentous Agency | Motivate. Innovate. Create.',
   description:
     'A forward-thinking digital agency helping brands create momentous impact through strategy, design, and technology.',
@@ -25,6 +28,7 @@ export const metadata: Metadata = {
     description: 'A forward-thinking digital agency helping brands create momentous impact.',
     type: 'website',
     url: LEGAL.website,
+    siteName: 'Momentous Agency',
     images: [
       {
         url: BRAND_LOGO_SRC,

@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { EASE_OUT, fadeUpItemVariants, staggerContainerVariants } from "@/lib/motion"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Clock, Calendar, ArrowRight } from "lucide-react"
@@ -34,27 +35,8 @@ const contactInfo = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-}
+const containerVariants = staggerContainerVariants
+const itemVariants = fadeUpItemVariants
 
 export default function ContactPage() {
   return (
@@ -67,7 +49,7 @@ export default function ContactPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.6, ease: EASE_OUT }}
               className="text-center max-w-4xl mx-auto"
             >
               <motion.span
@@ -120,7 +102,7 @@ export default function ContactPage() {
 
                 {/* Contact Details */}
                 <div className="space-y-6 mb-10">
-                  {contactInfo.map((item, index) => (
+                  {contactInfo.map((item) => (
                     <motion.a
                       key={item.label}
                       href={item.href}
@@ -173,7 +155,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                transition={{ duration: 0.6, ease: EASE_OUT }}
                 className="lg:col-span-3"
               >
                 <div className="p-8 lg:p-10 rounded-2xl bg-card border border-border">
@@ -191,7 +173,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{ duration: 0.6, ease: EASE_OUT }}
               className="rounded-2xl overflow-hidden bg-secondary h-[400px] relative"
             >
               <div className="absolute inset-0 gradient-primary opacity-80" />

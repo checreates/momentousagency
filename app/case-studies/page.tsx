@@ -142,8 +142,8 @@ export default function CaseStudiesPage() {
                     ))}
                   </div>
                   <Button asChild className="rounded-full px-8 gradient-primary hover:opacity-90 transition-opacity w-fit">
-                    <Link href={`/case-studies/${caseStudies[0].slug}`}>
-                      View Full Case Study
+                    <Link href="/contact">
+                      Start Your Project
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Link>
                   </Button>
@@ -173,7 +173,7 @@ export default function CaseStudiesPage() {
               {caseStudies.slice(1).map((study) => (
                 <Link
                   key={study.slug}
-                  href={`/case-studies/${study.slug}`}
+                  href="/contact"
                   className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/30 transition-all duration-300"
                 >
                   {/* Image placeholder */}

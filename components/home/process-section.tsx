@@ -1,6 +1,8 @@
 "use client"
 
+import type { Variants } from "framer-motion"
 import { motion } from "framer-motion"
+import { EASE_OUT, fadeUpProcessItemVariants } from "@/lib/motion"
 import { Search, Lightbulb, Rocket, TrendingUp } from "lucide-react"
 
 const steps = [
@@ -30,27 +32,15 @@ const steps = [
   },
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.15 },
   },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-}
+const itemVariants = fadeUpProcessItemVariants
 
 const floatingGlowTransition = {
   duration: 4,
@@ -67,7 +57,7 @@ export function ProcessSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-primary text-sm font-medium mb-4">

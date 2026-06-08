@@ -1,7 +1,10 @@
+/** Canonical public site URL — used for metadata, legal pages, and redirects. */
+export const CANONICAL_URL = "https://www.momentousagency.xyz" as const
+
 /** Business details for public legal pages and A2P / chat-widget compliance */
 export const LEGAL = {
   brandName: "Momentous Agency",
-  website: "https://www.momentousagency.xyz",
+  website: CANONICAL_URL,
   email: "hello@momentous.marketing",
   phone: "835-276-4138",
   phoneE164: "+18352764138",

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { BrandLogo } from "@/components/brand-logo"
+import { EASE_OUT } from "@/lib/motion"
 import { BRAND_NAME } from "@/lib/brand"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -22,7 +23,7 @@ export function Navigation() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.5, ease: EASE_OUT }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
