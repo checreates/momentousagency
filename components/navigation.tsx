@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { BrandLogo } from "@/components/brand-logo"
-import { EASE_OUT } from "@/lib/motion"
 import { BRAND_NAME } from "@/lib/brand"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -20,65 +19,35 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <motion.header
-      initial={false}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: EASE_OUT }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border"
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link href="/" className="flex items-center gap-3">
-              <BrandLogo width={44} height={44} className="w-11 h-11" priority />
-              <span className="font-bold text-base sm:text-lg tracking-tight text-foreground">
-                {BRAND_NAME}
-              </span>
-            </Link>
-          </motion.div>
+          <Link href="/" className="flex items-center gap-3 transition-transform hover:scale-[1.02] active:scale-[0.98]">
+            <BrandLogo width={44} height={44} className="w-11 h-11" priority />
+            <span className="font-bold text-base sm:text-lg tracking-tight text-foreground">
+              {BRAND_NAME}
+            </span>
+          </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link, index) => (
-              <motion.div
+            {navLinks.map((link) => (
+              <Link
                 key={link.href}
-                initial={false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + index * 0.05 }}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
               >
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </Link>
-              </motion.div>
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+              </Link>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden md:block"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button asChild className="rounded-full px-6 gradient-primary hover:opacity-90 transition-opacity">
-                <Link href="/contact">Get Started</Link>
-              </Button>
-            </motion.div>
-          </motion.div>
+          <div className="hidden md:block">
+            <Button asChild className="rounded-full px-6 gradient-primary hover:opacity-90 transition-opacity">
+              <Link href="/contact">Get Started</Link>
+            </Button>
+          </div>
 
-          {/* Mobile Menu Button */}
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen((v) => !v)}
@@ -111,7 +80,6 @@ export function Navigation() {
           </motion.button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -152,6 +120,6 @@ export function Navigation() {
           )}
         </AnimatePresence>
       </nav>
-    </motion.header>
+    </header>
   )
 }

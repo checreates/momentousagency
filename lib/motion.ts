@@ -10,6 +10,29 @@ export const staggerContainerVariants: Variants = {
   },
 }
 
+export const staggerHeroContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
+}
+
+export const slideStepVariants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 50 : -50,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? 50 : -50,
+    opacity: 0,
+  }),
+}
+
 export const fadeUpItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {

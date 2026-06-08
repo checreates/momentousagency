@@ -8,6 +8,7 @@ import { ArrowRight, ArrowLeft, CheckCircle, User, Building, Mail, Briefcase, Do
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { slideStepVariants } from "@/lib/motion"
 
 const services = [
   { id: "brand", label: "Brand Strategy & Identity", icon: "🎨" },
@@ -44,22 +45,6 @@ const steps = [
   { id: 5, title: "Project", icon: MessageSquare },
 ]
 
-// Keep motion variants stable to avoid reallocating objects on every render.
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 50 : -50,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    x: direction < 0 ? 50 : -50,
-    opacity: 0,
-  }),
-}
-
 export function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -76,30 +61,8 @@ export function MultiStepForm() {
     message: "",
   })
 
-  // Scroll to top of form when step changes (for all devices)
   useEffect(() => {
-    if (formContainerRef.current) {
-      // Get the form container's position relative to the viewport
-      const rect = formContainerRef.current.getBoundingClientRect()
-      
-      // Check if the top of the form is above the viewport (scrolled past)
-      // or if on mobile and need to ensure visibility
-      if (rect.top < 100) {
-        const yOffset = -100 // Offset to account for fixed header
-        const y = rect.top + window.pageYOffset + yOffset
-        
-        window.scrollTo({
-          top: Math.max(0, y),
-          behavior: "smooth"
-        })
-      }
-      
-      // Also scroll within the form container itself if needed
-      formContainerRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-      })
-    }
+    formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
   }, [currentStep])
 
   const updateFormData = (field: keyof FormData, value: string | string[]) => {
@@ -289,7 +252,7 @@ export function MultiStepForm() {
             <motion.div
               key="step1"
               custom={1}
-              variants={slideVariants}
+              variants={slideStepVariants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -336,7 +299,7 @@ export function MultiStepForm() {
             <motion.div
               key="step2"
               custom={1}
-              variants={slideVariants}
+              variants={slideStepVariants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -362,7 +325,7 @@ export function MultiStepForm() {
             <motion.div
               key="step3"
               custom={1}
-              variants={slideVariants}
+              variants={slideStepVariants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -397,7 +360,7 @@ export function MultiStepForm() {
             <motion.div
               key="step4"
               custom={1}
-              variants={slideVariants}
+              variants={slideStepVariants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -437,7 +400,7 @@ export function MultiStepForm() {
             <motion.div
               key="step5"
               custom={1}
-              variants={slideVariants}
+              variants={slideStepVariants}
               initial="enter"
               animate="center"
               exit="exit"
