@@ -37,7 +37,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <BrandLogo width={48} height={48} className="w-12 h-12" onDark />
+              <BrandLogo width={48} height={48} className="w-12 h-12" />
               <span className="font-bold text-xl tracking-tight">
                 {BRAND_NAME}
               </span>

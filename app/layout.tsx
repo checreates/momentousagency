@@ -25,6 +25,18 @@ export const metadata: Metadata = {
     description: 'A forward-thinking digital agency helping brands create momentous impact.',
     type: 'website',
     url: LEGAL.website,
+    images: [
+      {
+        url: BRAND_LOGO_SRC,
+        width: 512,
+        height: 512,
+        alt: 'Momentous Agency',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    images: [BRAND_LOGO_SRC],
   },
   icons: {
     icon: BRAND_LOGO_SRC,

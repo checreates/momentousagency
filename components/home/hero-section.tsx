@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { BrandLogo } from "@/components/brand-logo"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -72,14 +71,12 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8"
-          >
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-3xl space-y-8"
+        >
             {/* Badge */}
             <motion.div variants={itemVariants}>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent border border-primary/20">
@@ -131,37 +128,7 @@ export function HeroSection() {
                 </Button>
               </motion.div>
             </motion.div>
-
-            
-          </motion.div>
-
-          {/* Right Column - Visual */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative lg:pl-8"
-          >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              {/* Glow effect behind logo */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl" />
-              
-              {/* Logo */}
-              <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
-              >
-                <BrandLogo
-                  width={500}
-                  height={500}
-                  className="w-full h-full drop-shadow-2xl"
-                  priority
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

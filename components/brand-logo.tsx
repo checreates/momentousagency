@@ -6,8 +6,6 @@ type BrandLogoProps = {
   width: number
   height: number
   className?: string
-  /** Light pill behind logo — use on dark footer */
-  onDark?: boolean
   priority?: boolean
 }
 
@@ -15,25 +13,17 @@ export function BrandLogo({
   width,
   height,
   className,
-  onDark = false,
   priority = false,
 }: BrandLogoProps) {
-  const image = (
+  return (
     <Image
       src={BRAND_LOGO_SRC}
       alt={BRAND_NAME}
       width={width}
       height={height}
-      className={cn("object-contain", className)}
+      className={cn("object-contain rounded-xl", className)}
       priority={priority}
+      loading={priority ? "eager" : undefined}
     />
-  )
-
-  if (!onDark) return image
-
-  return (
-    <span className="inline-flex rounded-xl bg-white/95 p-1 shadow-sm">
-      {image}
-    </span>
   )
 }
